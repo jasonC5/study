@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
  * Created by Administrator on 2021/1/12.
  */
 public class Test_0112 {
-    final private LinkedList<String> lists = new LinkedList();//线程安全
+    final private LinkedList<String> lists = new LinkedList();//非线程安全
     private int count = 0;
     final private int capacity = 20;
 
