@@ -5,14 +5,18 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Administrator on 2021/1/12.
+ * 生产者消费者问题
  */
 public class Test_0112 {
     final private LinkedList<String> lists = new LinkedList();//非线程安全
     private int count = 0;
     final private int capacity = 20;
 
+    final Object consumerLock = new Object();
+    final Object producerLock = new Object();
+
     public synchronized void put(String item){
-        while (lists.size() >= capacity) {
+        while (lists.size() >= capacity) {//被唤醒之后还需要继续判断（唤醒时状态不确定）
             try {
                 this.wait();
             } catch (InterruptedException e) {
@@ -85,7 +89,7 @@ public class Test_0112 {
 //                System.out.println(Thread.currentThread().getName()+" consume "+obj.get());
 //            }
 //        };
-        for (int i = 0;i<10;i++) {
+        for (int i = 0;i<100;i++) {
             new Thread(()->{
                 System.out.println(Thread.currentThread().getName()+" consume "+obj.get());
             },"consumer_"+i).start();
