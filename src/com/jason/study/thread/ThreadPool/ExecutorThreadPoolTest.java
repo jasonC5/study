@@ -11,5 +11,6 @@ public class ExecutorThreadPoolTest {
         );
         threadPoolExecutor.shutdown();
         threadPoolExecutor.awaitTermination(1,TimeUnit.SECONDS);
+        System.exit(0);
     }
 }
