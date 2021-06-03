@@ -18,7 +18,7 @@ public class ConditionTest {
                 lock.lock();
                 for (char c : b) {
                     t2Condition.await();
-                    System.out.println(c);
+                    System.out.print(c);
                     t1Condition.signal();
                 }
                 t1Condition.signal();
@@ -32,11 +32,11 @@ public class ConditionTest {
             try {
                 lock.lock();
                 for (char c : a) {
-                    System.out.println(c);
+                    System.out.print(c);
                     t2Condition.signal();
                     t1Condition.await();
                 }
-                t1Condition.signal();
+                t2Condition.signal();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } finally {
