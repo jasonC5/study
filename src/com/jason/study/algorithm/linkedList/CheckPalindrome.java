@@ -4,7 +4,7 @@ import java.util.Objects;
 import java.util.Stack;
 
 /**
- * 判断回文字串
+ * 判断回文串
  *
  * @author JasonC5
  */
