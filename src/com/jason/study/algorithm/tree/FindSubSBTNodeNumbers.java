@@ -49,7 +49,7 @@ public class FindSubSBTNodeNumbers {
                     : Math.max(leftInfo == null ? 0 : leftInfo.maxSubSBTNodeNum, rightInfo == null ? 0 : rightInfo.maxSubSBTNodeNum);
             //如果本子树是二叉查找树那么下面这个赋值就是正确的，如果不是，那么怎么赋值都无所谓了
             max = rightInfo == null ? max : rightInfo.max;
-            min = leftInfo == null ? max : leftInfo.min;
+            min = leftInfo == null ? min : leftInfo.min;
         } else {
             //左右只要有一个不是二叉搜索树，那本子树就不是二叉搜索树，再往上就都不是二叉搜索树，答案基本上就固定了，这里给值就随意一些(max、min直接赋成自己了)
             isSBT = false;
