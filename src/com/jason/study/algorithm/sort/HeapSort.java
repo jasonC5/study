@@ -83,7 +83,9 @@ public class HeapSort {
             if (left > heapSize - 1) {//没有子了，直接return
                 return;
             }
+            //左右孩子中较大的
             int bigIndex = left + 1 <= heapSize - 1 && arr[left] < arr[left + 1] ? left + 1 : left;
+            //再和自己比较谁大，比左右孩子都大就找到了自己的位置
             bigIndex = arr[bigIndex] > arr[index] ? bigIndex : index;
             if (bigIndex != index) {//index不是left、right、index中最大的，大的往上浮动，自己往下走
                 swap(arr, index, bigIndex);

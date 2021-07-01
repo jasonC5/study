@@ -9,6 +9,7 @@ public class ExecutorThreadPoolTest {
                 Executors.defaultThreadFactory(),       //创建线程 factory
                 new ThreadPoolExecutor.AbortPolicy()    //拒绝策略
         );
+        Future<Integer> submit = threadPoolExecutor.submit(() -> 1);
         threadPoolExecutor.shutdown();
         threadPoolExecutor.awaitTermination(1,TimeUnit.SECONDS);
         System.exit(0);
