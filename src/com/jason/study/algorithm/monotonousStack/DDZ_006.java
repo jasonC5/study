@@ -1,4 +1,4 @@
-package com.jason.study.algorithm.others;
+package com.jason.study.algorithm.monotonousStack;
 
 /**
  * https://leetcode-cn.com/problems/sum-of-subarray-minimums/
