@@ -8,10 +8,10 @@ package com.jason.study.algorithm.tree;
  */
 public class CheckSBT {
     //需要左右子树提供的信息：1.所有子树是否搜索二叉树，2.左子树的最小值，3.右子树的最大值
-    static class Info {
-        boolean isSBT;
-        int max;
-        int min;
+    public static class Info {
+        public boolean isSBT;
+        public int max;
+        public int min;
 
         public Info(boolean isSBT, int max, int min) {
             this.isSBT = isSBT;

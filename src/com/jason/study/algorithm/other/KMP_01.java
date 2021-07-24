@@ -39,6 +39,7 @@ public class KMP_01 {
         return pointer2 == s2.length() ? pointer1 - pointer2 : -1;
     }
 
+    //next数组和含义：前缀和后缀匹配的长度  也= 如果当前字符匹配失败，该跳到哪里自动匹配
     public static int[] getNextArr(String str) {
         if (str.length() == 1) {
             return new int[]{-1};

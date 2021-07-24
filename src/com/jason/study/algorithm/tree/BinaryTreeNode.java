@@ -4,9 +4,9 @@ package com.jason.study.algorithm.tree;
  * @author JasonC5
  */
 public class BinaryTreeNode<T> {
-    T value;
-    BinaryTreeNode left;
-    BinaryTreeNode right;
+    public T value;
+    public BinaryTreeNode left;
+    public BinaryTreeNode right;
 
     public BinaryTreeNode() {
     }
