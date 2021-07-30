@@ -66,7 +66,7 @@ public class SBT_01 {
                 cur.r = arrange(cur.r);
                 cur = arrange(cur);
             } else if (lr > r) {
-                cur = leftRotate(cur);
+                cur.l = leftRotate(cur.l);
                 cur = rightRotate(cur);
                 cur.l = arrange(cur.l);
                 cur.r = arrange(cur.r);
@@ -76,7 +76,7 @@ public class SBT_01 {
                 cur.l = arrange(cur.l);
                 cur = arrange(cur);
             } else if (rl > l) {
-                cur = rightRotate(cur);
+                cur.r = rightRotate(cur.r);
                 cur = leftRotate(cur);
                 cur.l = arrange(cur.l);
                 cur.r = arrange(cur.r);
@@ -144,7 +144,7 @@ public class SBT_01 {
                         swapNode = swapNode.l;
                         swapNode.size--;
                     }
-                    //说明不是该节点的右子节点，而是确实往下跑了
+                    //说明不是该节点的右子节点，而是确实往下跑了，swapNode节点虽然是右子树的最左节点，但是右边不一定是空的，不一定是叶子节点，所以需要甩给父节点挂上
                     if (pre != null) {
                         //接盘
                         pre.l = swapNode.r;
