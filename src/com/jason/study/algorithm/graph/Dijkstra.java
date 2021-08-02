@@ -31,7 +31,7 @@ public class Dijkstra {
             }
             seen.add(minNode);
             //继续查找下一个点
-            getMinDistanceAndUnselectedNode(ans, seen);
+            minNode = getMinDistanceAndUnselectedNode(ans, seen);
         }
         //从已经解锁的点中，找出离from最近的
         return ans;
@@ -46,7 +46,7 @@ public class Dijkstra {
             if (seen.contains(node)) {
                 continue;
             }
-            if (distance > minDistance) {
+            if (distance < minDistance) {
                 minNode = node;
                 minDistance = distance;
             }
