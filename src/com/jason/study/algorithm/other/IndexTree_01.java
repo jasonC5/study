@@ -70,7 +70,7 @@ public class IndexTree_01 {
         int length;
 
         public IndexTree(int length) {
-            this.length = length + 1;
+            this.length = length;
             nums = new int[length + 1];
         }
 
