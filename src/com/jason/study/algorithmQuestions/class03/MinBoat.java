@@ -15,6 +15,14 @@ import java.util.Arrays;
  */
 public class MinBoat {
 
+    public static void main(String[] args) {
+        int[] arr = {5,1,4,2};
+        int limit = 6;
+
+        System.out.println(minBoat(arr, limit));
+        System.out.println(minBoat2(arr, limit));
+    }
+
     public static int minBoat(int[] arr, int limit) {
         if (arr == null || arr.length == 0) {
             return 0;
@@ -30,7 +38,7 @@ public class MinBoat {
         int lessRight = -1;
         for (int i = length - 1; i >= 0; i--) {
             if (arr[i] <= (limit >> 1)) {
-                lessRight = 0;
+                lessRight = i;
                 break;
             }
         }
@@ -63,5 +71,47 @@ public class MinBoat {
         //右边还剩多少
         int rightRestRest = (length - lessRight - 1) - picked;
         return picked + leftRestCost + rightRestRest;
+    }
+
+
+    public static int minBoat2(int[] arr, int limit) {
+        if (arr == null || arr.length == 0) {
+            return 0;
+        }
+        int N = arr.length;
+        Arrays.sort(arr);
+        if (arr[N - 1] > limit) {
+            return -1;
+        }
+        int lessR = -1;
+        for (int i = N - 1; i >= 0; i--) {
+            if (arr[i] <= (limit / 2)) {
+                lessR = i;
+                break;
+            }
+        }
+        if (lessR == -1) {
+            return N;
+        }
+        int L = lessR;
+        int R = lessR + 1;
+        int noUsed = 0;
+        while (L >= 0) {
+            int solved = 0;
+            while (R < N && arr[L] + arr[R] <= limit) {
+                R++;
+                solved++;
+            }
+            if (solved == 0) {
+                noUsed++;
+                L--;
+            } else {
+                L = Math.max(-1, L - solved);
+            }
+        }
+        int all = lessR + 1;
+        int used = all - noUsed;
+        int moreUnsolved = (N - all) - used;
+        return used + ((noUsed + 1) >> 1) + moreUnsolved;
     }
 }
