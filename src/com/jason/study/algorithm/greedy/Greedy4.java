@@ -50,7 +50,7 @@ public class Greedy4 {
         for (int i = 0; i < k; i++) {
 //            成本是m
             Program poll = constHeap.poll();
-            while (poll.c > m) {
+            while (m >=poll.c ) {
                 profitHeap.add(poll);
                 poll = constHeap.poll();
             }
@@ -62,7 +62,7 @@ public class Greedy4 {
             //手上的资金变多了，下次可以选更高成本的了
             m += maxProfit.p;
         }
-        return 0; 
+        return ans;
     }
     
     public static class Program {
