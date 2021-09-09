@@ -191,7 +191,7 @@ public class BFPRT_01 {
         int size = right - left + 1;
         int[] midArr = new int[size / 5 + ((size % 5 == 0) ? 0 : 1)];
         for (int i = 0; i < midArr.length; i++) {
-            int l = left * i * 5;
+            int l = left + i * 5;
             //局部排序，取中位数
             midArr[i] = getMid(arr, l, Math.min(l + 4, right));
         }
