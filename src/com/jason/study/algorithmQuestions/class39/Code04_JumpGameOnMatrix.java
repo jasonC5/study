@@ -99,6 +99,7 @@ public class Code04_JumpGameOnMatrix {
         return next != Integer.MAX_VALUE ? (next + 1) : next;
     }
 
+    //TODO 可以用线段树优化
     public static int jump2(int[][] arr) {
         //给定一个二维数组matrix，matrix[i][j] = k代表:
         //从(i,j)位置可以随意往右跳<=k步，或者从(i,j)位置可以随意往下跳<=k步
@@ -117,6 +118,7 @@ public class Code04_JumpGameOnMatrix {
         dp[rowLen - 1][colLen - 1] = 0;
         for (int col = colLen - 2; col >= 0; col--) {
             int num = arr[rowLen - 1][col];
+            //TODO 范围上的最小值，线段树优化
             for (int i = col; i <= Math.min(colLen - 1, col + num); i++) {
                 int count = dp[rowLen - 1][i];
                 dp[rowLen - 1][col] = Math.min(dp[rowLen - 1][col], count == Integer.MAX_VALUE ? Integer.MAX_VALUE : (count + 1));
@@ -125,6 +127,7 @@ public class Code04_JumpGameOnMatrix {
         // 最后一列
         for (int row = rowLen - 2; row >= 0; row--) {
             int num = arr[row][colLen - 1];
+            //TODO 范围上的最小值，线段树优化
             for (int i = row; i <= Math.min(rowLen - 1, row + num); i++) {
                 int count = dp[i][colLen - 1];
                 dp[row][colLen - 1] = Math.min(dp[row][colLen - 1], count == Integer.MAX_VALUE ? Integer.MAX_VALUE : (count + 1));
@@ -135,11 +138,13 @@ public class Code04_JumpGameOnMatrix {
             for (int row = rowLen - 2; row >= 0; row--) {
                 int num = arr[row][col];
                 // 往同一列跳
+                //TODO 范围上的最小值，线段树优化
                 for (int i = col; i <= Math.min(colLen - 1, col + num); i++) {
                     int count = dp[row][i];
                     dp[row][col] = Math.min(dp[row][col], count == Integer.MAX_VALUE ? Integer.MAX_VALUE : (count + 1));
                 }
                 // 往同一行跳
+                //TODO 范围上的最小值，线段树优化
                 for (int i = row; i <= Math.min(rowLen - 1, row + num); i++) {
                     int count = dp[i][col];
                     dp[row][col] = Math.min(dp[row][col], count == Integer.MAX_VALUE ? Integer.MAX_VALUE : (count + 1));
