@@ -1,5 +1,8 @@
 package com.jason.study.algorithmQuestions.class51;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * 力扣团队买了一个可编程机器人，机器人初始位置在原点(0, 0)。小伙伴事先给机器人输入一串指令command，机器人就会无限循环这条指令的步骤进行移动。指令有两种：
  * <p>
@@ -86,8 +89,43 @@ public class LCP_03 {
         int[][] obstacles = new int[][]{{4, 2}};
         int x = 3, y = 2;
         System.out.println(robot(command, obstacles, x, y));
+        System.out.println(robot2(command, obstacles, x, y));
     }
 
     // TODO 可以改成二进制版本
+    public static boolean robot2(String command, int[][] obstacles, int x, int y) {
+        char[] chars = command.toCharArray();
+        Set<Integer> cache = new HashSet<>();
+        cache.add(0);
+        int pointX = 0, pointY = 0;
+        for (int i = 0; i < chars.length; i++) {
+            if (chars[i] == 'U') {
+                pointY += 1;
+            } else {
+                pointX += 1;
+            }
+            int point = pointX << 10 | pointY;
+            cache.add(point);
+        }
+        //是否能到达目的地
+        if (!meet(cache, pointX, pointY, x, y)) {
+            return false;
+        }
+        // 中间是否会碰到障碍
+        for (int[] obstacle : obstacles) {
+            if (obstacle.length > 0 && obstacle[0] <= x && obstacle[1] <= y && meet(cache, pointX, pointY, obstacle[0], obstacle[1])) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static boolean meet(Set<Integer> cache, int pointX, int pointY, int x, int y) {
+        int count = Math.min(x / pointX, y / pointY);
+        int offsetX = x - count * pointX;
+        int offsetY = y - count * pointY;
+        return cache.contains(offsetX << 10 | offsetY);
+    }
+
 
 }
