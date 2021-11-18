@@ -1,9 +1,7 @@
 package com.jason.study.algorithmQuestions.class45;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeSet;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * 给你一个长度为 2 * n的整数数组。你需要将nums分成两个长度为n的数组，分别求出两个数组的和，并 最小化两个数组和之差的绝对值。nums中每个元素都需要放入两个数组之一。

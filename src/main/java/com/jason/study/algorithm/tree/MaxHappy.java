@@ -39,7 +39,7 @@ public class MaxHappy {
 
     public static int findMaxHappy(Node boss) {
         Info info = process(boss);
-        return info.goHappy > info.notGoHappy ? info.goHappy : info.notGoHappy;
+        return Math.max(info.goHappy, info.notGoHappy);
     }
 
     private static Info process(Node node) {
